@@ -58,10 +58,10 @@ resource "aws_security_group_rule" "public_sg_rule_01" {
 }
 
 resource "aws_security_group_rule" "public_sg_rule_02" {
-  from_port         = "icmp"
+  from_port         = ICMP
   protocol          = "icmp"
   security_group_id = aws_security_group.public_vm_sg.id
-  to_port           = "icmp"
+  to_port           = ICMP
   type              = "ingress"
   cidr_blocks       = ["10.10.10.0/24"]
 }
