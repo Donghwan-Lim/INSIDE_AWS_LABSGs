@@ -65,3 +65,12 @@ resource "aws_security_group_rule" "public_sg_rule_02" {
   type              = "ingress"
   cidr_blocks       = ["10.10.10.0/24"]
 }
+
+resource "aws_security_group_rule" "public_sg_rule_03" {
+  from_port         = "-1"
+  protocol          = "icmp"
+  security_group_id = aws_security_group.public_vm_sg.id
+  to_port           = "-1"
+  type              = "egress"
+  cidr_blocks       = ["10.10.10.0/24"]
+}
