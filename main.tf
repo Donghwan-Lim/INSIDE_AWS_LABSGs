@@ -46,3 +46,11 @@ resource "aws_security_group" "public_vm_sg" {
 
   tags = local.common-tags
 }
+
+resource "aws_security_group_rule" "public_sg_rule_01" {
+  from_port = 22
+  protocol = "tcp"
+  security_group_id = aws_security_group.public_vm_sg.id
+  to_port = 0
+  type = "ingress"
+}
