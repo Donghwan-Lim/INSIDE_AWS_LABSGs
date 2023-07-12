@@ -44,7 +44,10 @@ resource "aws_security_group" "vpc1_public_vm_sg" {
   description = "INSIDE_AWS_Public_VM_Security_GROUP"
   vpc_id      = data.terraform_remote_state.network.outputs.vpc01_id
 
-  tags = local.common-tags
+  tags = (merge(local.common-tags, tomap({
+    Name     = "vpc1_public_vm_sg"
+    resource = "aws_security_group"
+  })))
 }
 
 ### SSH Port open ANY
@@ -80,7 +83,10 @@ resource "aws_security_group" "vpc2_public_vm_sg" {
   description = "INSIDE_AWS_Public_VM_Security_GROUP"
   vpc_id      = data.terraform_remote_state.network.outputs.vpc02_id
 
-  tags = local.common-tags
+  tags = (merge(local.common-tags, tomap({
+    Name     = "vpc2_public_vm_sg"
+    resource = "aws_security_group"
+  })))
 }
 
 ### SSH Port open ANY
