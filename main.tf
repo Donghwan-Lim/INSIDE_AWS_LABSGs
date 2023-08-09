@@ -78,6 +78,15 @@ resource "aws_security_group_rule" "public_sg_rule_03" {
   cidr_blocks       = ["10.10.10.0/24"]
 }
 
+resource "aws_security_group_rule" "public_sg_rule_04" {
+  from_port         = "443"
+  protocol          = "tcp"
+  security_group_id = aws_security_group.vpc1_public_vm_sg.id
+  to_port           = "443"
+  type              = "egress"
+  cidr_blocks       = ["0.0.0.0/0"]
+}
+
 resource "aws_security_group" "vpc2_public_vm_sg" {
   name        = "public_vm_sg_vpc2"
   description = "INSIDE_AWS_Public_VM_Security_GROUP"
