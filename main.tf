@@ -62,6 +62,7 @@ resource "aws_security_group_rule" "public_sg_rule_01" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
+### ICMP open from public vpc1
 resource "aws_security_group_rule" "public_sg_rule_02" {
   from_port         = "-1"
   protocol          = "icmp"
@@ -71,6 +72,7 @@ resource "aws_security_group_rule" "public_sg_rule_02" {
   cidr_blocks       = ["10.10.10.0/24"]
 }
 
+### ICMP open to public vpc1
 resource "aws_security_group_rule" "public_sg_rule_03" {
   from_port         = "-1"
   protocol          = "icmp"
@@ -80,6 +82,7 @@ resource "aws_security_group_rule" "public_sg_rule_03" {
   cidr_blocks       = ["10.10.10.0/24"]
 }
 
+### HTTPS port open to any
 resource "aws_security_group_rule" "public_sg_rule_04" {
   from_port         = "443"
   protocol          = "tcp"
@@ -89,15 +92,15 @@ resource "aws_security_group_rule" "public_sg_rule_04" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
+### SSH port open to any
 resource "aws_security_group_rule" "public_sg_rule_05" {
-  from_port         = "443"
+  from_port         = "22"
   protocol          = "tcp"
   security_group_id = aws_security_group.vpc1_public_vm_sg.id
-  to_port           = "443"
-  type              = "ingress"
+  to_port           = "22"
+  type              = "egress"
   cidr_blocks       = ["0.0.0.0/0"]
 }
-
 
 ########################################## VPC1 PUBLIC VM SG ###########################################
 
