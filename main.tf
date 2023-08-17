@@ -102,6 +102,16 @@ resource "aws_security_group_rule" "public_sg_rule_05" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
+### HTTP port open to any
+resource "aws_security_group_rule" "public_sg_rule_06" {
+  from_port         = "22"
+  protocol          = "tcp"
+  security_group_id = aws_security_group.vpc1_public_vm_sg.id
+  to_port           = "22"
+  type              = "egress"
+  cidr_blocks       = ["10.10.10.0/24"]
+}
+
 ########################################## VPC1 PUBLIC VM SG ###########################################
 
 resource "aws_security_group" "vpc2_public_vm_sg" {
