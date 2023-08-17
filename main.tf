@@ -92,12 +92,12 @@ resource "aws_security_group_rule" "public_sg_rule_04" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
-### SSH port open to any
+### HTTP port open to any
 resource "aws_security_group_rule" "public_sg_rule_05" {
-  from_port         = "22"
+  from_port         = "80"
   protocol          = "tcp"
   security_group_id = aws_security_group.vpc1_public_vm_sg.id
-  to_port           = "22"
+  to_port           = "80"
   type              = "egress"
   cidr_blocks       = ["0.0.0.0/0"]
 }
