@@ -39,6 +39,8 @@ data "terraform_remote_state" "network" {
   }
 }
 
+
+########################################## VPC1 PUBLIC VM SG ###########################################
 resource "aws_security_group" "vpc1_public_vm_sg" {
   name        = "public_vm_sg"
   description = "INSIDE_AWS_Public_VM_Security_GROUP"
@@ -86,6 +88,18 @@ resource "aws_security_group_rule" "public_sg_rule_04" {
   type              = "egress"
   cidr_blocks       = ["0.0.0.0/0"]
 }
+
+resource "aws_security_group_rule" "public_sg_rule_05" {
+  from_port         = "443"
+  protocol          = "tcp"
+  security_group_id = aws_security_group.vpc1_public_vm_sg.id
+  to_port           = "443"
+  type              = "ingress"
+  cidr_blocks       = ["0.0.0.0/0"]
+}
+
+
+########################################## VPC1 PUBLIC VM SG ###########################################
 
 resource "aws_security_group" "vpc2_public_vm_sg" {
   name        = "public_vm_sg_vpc2"
