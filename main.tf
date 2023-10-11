@@ -69,7 +69,7 @@ resource "aws_security_group_rule" "public_sg_rule_02" {
   security_group_id = aws_security_group.vpc1_public_vm_sg.id
   to_port           = "-1"
   type              = "ingress"
-  cidr_blocks       = ["10.10.10.0/24"]
+  cidr_blocks       = ["0.0.0.0/0"]
 }
 
 ### ICMP open to public vpc1
