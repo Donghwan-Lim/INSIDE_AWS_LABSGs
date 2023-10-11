@@ -40,7 +40,7 @@ data "terraform_remote_state" "network" {
 }
 
 
-########################################## VPC1 PUBLIC VM SG ###########################################
+########################################## (START) VPC1 PUBLIC VM SG ###########################################
 resource "aws_security_group" "vpc1_public_vm_sg" {
   name        = "public_vm_sg"
   description = "INSIDE_AWS_Public_VM_Security_GROUP"
@@ -111,9 +111,9 @@ resource "aws_security_group_rule" "public_sg_rule_06" {
   type              = "egress"
   cidr_blocks       = ["10.10.10.0/24"]
 }
+########################################## (END) VPC1 PUBLIC VM SG ###########################################
 
-########################################## VPC1 PUBLIC VM SG ###########################################
-
+########################################## (START) VPC2 PUBLIC VM SG ###########################################
 resource "aws_security_group" "vpc2_public_vm_sg" {
   name        = "public_vm_sg_vpc2"
   description = "INSIDE_AWS_Public_VM_Security_GROUP"
@@ -152,3 +152,4 @@ resource "aws_security_group_rule" "vpc2_public_sg_rule_03" {
   type              = "egress"
   cidr_blocks       = ["10.10.20.0/24"]
 }
+########################################## (END) VPC2 PUBLIC VM SG ###########################################
