@@ -79,7 +79,7 @@ resource "aws_security_group_rule" "public_sg_rule_03" {
   security_group_id = aws_security_group.vpc1_public_vm_sg.id
   to_port           = "-1"
   type              = "egress"
-  cidr_blocks       = ["10.10.10.0/24"]
+  cidr_blocks       = ["0.0.0.0/24"]
 }
 
 ### HTTPS port open to any
