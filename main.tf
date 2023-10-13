@@ -113,7 +113,7 @@ resource "aws_security_group_rule" "public_sg_rule_06" {
 }
 
 ### HTTPS port open from any
-resource "aws_security_group_rule" "public_sg_rule_06" {
+resource "aws_security_group_rule" "public_sg_rule_07" {
   from_port         = "443"
   protocol          = "tcp"
   security_group_id = aws_security_group.vpc1_public_vm_sg.id
