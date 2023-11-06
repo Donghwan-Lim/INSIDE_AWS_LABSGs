@@ -73,6 +73,7 @@ resource "aws_security_group_rule" "public_sg_rule_02" {
 }
 
 ### ICMP open to public vpc1
+/*
 resource "aws_security_group_rule" "public_sg_rule_03" {
   from_port         = "-1"
   protocol          = "icmp"
@@ -81,7 +82,7 @@ resource "aws_security_group_rule" "public_sg_rule_03" {
   type              = "egress"
   cidr_blocks       = ["0.0.0.0/24"]
 }
-
+*/
 ### HTTPS port open to any
 resource "aws_security_group_rule" "public_sg_rule_04" {
   from_port         = "443"
