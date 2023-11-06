@@ -125,7 +125,7 @@ resource "aws_security_group_rule" "public_sg_rule_07" {
 ########################################## (END) VPC1 PUBLIC VM SG ###########################################
 
 ########################################## (START) VPC2 PRIVATE VM SG ###########################################
-resource "aws_security_group" "vpc2_public_vm_sg" {
+resource "aws_security_group" "vpc2_private_vm_sg" {
   name        = "private_vm_sg_vpc2"
   description = "INSIDE_AWS_Private_VM_Security_GROUP"
   vpc_id      = data.terraform_remote_state.network.outputs.vpc02_id
