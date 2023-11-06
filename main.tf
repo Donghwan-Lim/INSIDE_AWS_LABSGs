@@ -140,7 +140,7 @@ resource "aws_security_group" "vpc2_private_vm_sg" {
 resource "aws_security_group_rule" "vpc2_private_sg_rule_01" {
   from_port         = 22
   protocol          = "tcp"
-  security_group_id = aws_security_group.vpc2_public_vm_sg.id
+  security_group_id = aws_security_group.vpc2_private_vm_sg.id
   to_port           = 22
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
@@ -149,7 +149,7 @@ resource "aws_security_group_rule" "vpc2_private_sg_rule_01" {
 resource "aws_security_group_rule" "vpc2_private_sg_rule_02" {
   from_port         = "-1"
   protocol          = "icmp"
-  security_group_id = aws_security_group.vpc2_public_vm_sg.id
+  security_group_id = aws_security_group.vpc2_private_vm_sg.id
   to_port           = "-1"
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
@@ -158,7 +158,7 @@ resource "aws_security_group_rule" "vpc2_private_sg_rule_02" {
 resource "aws_security_group_rule" "vpc2_private_sg_rule_03" {
   from_port         = "-1"
   protocol          = "icmp"
-  security_group_id = aws_security_group.vpc2_public_vm_sg.id
+  security_group_id = aws_security_group.vpc2_private_vm_sg.id
   to_port           = "-1"
   type              = "egress"
   cidr_blocks       = ["0.0.0.0/0"]
@@ -167,7 +167,7 @@ resource "aws_security_group_rule" "vpc2_private_sg_rule_03" {
 resource "aws_security_group_rule" "vpc2_private_sg_rule_04" {
   from_port         = "443"
   protocol          = "tcp"
-  security_group_id = aws_security_group.vpc2_public_vm_sg.id
+  security_group_id = aws_security_group.vpc2_private_vm_sg.id
   to_port           = "443"
   type              = "egress"
   cidr_blocks       = ["0.0.0.0/0"]
