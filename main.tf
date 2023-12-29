@@ -182,3 +182,26 @@ resource "aws_security_group_rule" "vpc2_private_sg_rule_04" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 ########################################## (END) VPC2 PUBLIC VM SG ###########################################
+
+########################################## (START) VPC1 Terraform Enterprise SG ###########################################
+resource "aws_security_group" "vpc1_terraform_sg" {
+  name        = "vpc1_terraform_sg"
+  description = "vpc1_terraform_sg"
+  vpc_id      = data.terraform_remote_state.network.outputs.vpc01_id
+
+  tags = (merge(local.common-tags, tomap({
+    Name     = "terraform Enterprise SG"
+    resource = "aws_security_group"
+  })))
+}
+
+### Terraform Console Port ALL Port open ANY
+resource "aws_security_group_rule" "vpc1_terraform_sg_rule_01" {
+  from_port         = 8800
+  protocol          = "tcp"
+  security_group_id = aws_security_group.vpc1_terraform_sg.id
+  to_port           = 8800
+  type              = "ingress"
+  cidr_blocks       = ["211.119.11.200/32"]
+}
+########################################## (END) VPC1 Terraform Enterprise SG ###########################################
