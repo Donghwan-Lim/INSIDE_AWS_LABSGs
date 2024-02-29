@@ -32,7 +32,7 @@ locals {
 data "terraform_remote_state" "network" {
   backend = "remote"
   config = {
-    organization = "Insideinfo"
+    organization = "INSIDE_CS_PART2"
     workspaces = {
       name = "INSIDE_AWS_LABNET"
     }
